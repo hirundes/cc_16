@@ -5,14 +5,13 @@ function fetchProductsThen() {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        return response.json(); // Parse the response as JSON
+        const data = response.json(); 
+        // console.log(data); 
+        return data
     })
-    .then(products => {
-        products.forEach(product => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${product.title}`;
-            const container = document.getElementById("product-container");
-            container.appendChild(listItem);
+    .then(data => {
+        data.forEach(product => {
+            console.log(product.fields.name);
         });
     })
     .catch(error => {
@@ -27,8 +26,11 @@ fetchProductsThen();
 async function fetchProductsAsync() {
     try {
         const response = await fetch('https://www.course-api.com/javascript-store-products');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
         const products = await response.json();
-        displayProducts(products); 
+        displayProducts(products.slice(0,5)); 
         
     } catch (error) {
         handleError(error); 
@@ -49,8 +51,8 @@ function displayProducts(products) {
 
         productDisplay.innerHTML = `
             <h2>${product.fields.name}</h2>
-            <img src="${product.fields.image[0].url}">
             <p>Price: $${product.fields.price}</p>
+            <img src="${product.fields.image[0].url}">
         `;
 
         container.appendChild(productDisplay);
