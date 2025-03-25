@@ -61,7 +61,4 @@ function displayProducts(products) {
 //Task 5
 function handleError(error) {
     console.error('There was a problem fetching products:', error);
-};
-
-
-
+}; 
