@@ -37,3 +37,23 @@ async function fetchProductsAsync() {
 
 fetchProductsAsync(); 
 
+
+//Task 4
+function displayProducts(products) {
+    const container = document.getElementById("product-container");
+    container.innerHTML = ""; 
+
+    products.forEach(product => {
+        const productDisplay = document.createElement("div");
+        productDisplay.classList.add("product");
+
+        productDisplay.innerHTML = `
+            <h2>${product.fields.name}</h2>
+            <img src="${product.fields.image[0].url}">
+            <p>Price: $${product.fields.price}</p>
+        `;
+
+        container.appendChild(productDisplay);
+    });
+}
+
