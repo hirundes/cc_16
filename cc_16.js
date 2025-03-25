@@ -62,3 +62,7 @@ function displayProducts(products) {
 function handleError(error) {
     console.error('There was a problem fetching products:', error);
 }; 
+
+//Task 6
+fetchProductsThen();
+fetchProductsAsync();
