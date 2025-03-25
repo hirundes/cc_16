@@ -55,5 +55,13 @@ function displayProducts(products) {
 
         container.appendChild(productDisplay);
     });
-}
+} 
+
+
+//Task 5
+function handleError(error) {
+    console.error('There was a problem fetching products:', error);
+};
+
+
 
