@@ -1,4 +1,4 @@
-function fetchProductThen() {
+function fetchProductsThen() {
     fetch('https://www.course-api.com/javascript-store-products')
     .then(response => {
         if (!response.ok) {
@@ -9,11 +9,14 @@ function fetchProductThen() {
     .then(products => {
         products.forEach(product => {
             const listItem = document.createElement('li');
-            listItem.textContent = `${product.title} - $${product.price}`;
-            product-container.appendChild(listItem);
+            listItem.textContent = `${product.title}`;
+            const container = document.getElementById("product-container");
+            container.appendChild(listItem);
         });
     })
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
     });
 }
+
+
